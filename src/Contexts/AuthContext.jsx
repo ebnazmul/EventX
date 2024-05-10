@@ -1,36 +1,70 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
-import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 
-
-export const AuthContexts = createContext({})
-
+export const AuthContexts = createContext({});
 
 const googleProvider = new GoogleAuthProvider();
 
 // eslint-disable-next-line react/prop-types
-const AuthContext = ({children}) => {
+const AuthContext = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [iUpdate, setIUpdate] = useState(false);
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        setUser(user);
+      }
+    });
+  }, [iUpdate]);
 
-    const emailPasswordRegister = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
-    }
-    const emailPasswordLogin = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password);
-    }
-    const continueWithGoogle = () => {
-       return signInWithPopup(auth, googleProvider);
-    }
+  const emailPasswordRegister = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const value = {
-        emailPasswordRegister,
-        emailPasswordLogin,
-        continueWithGoogle
-    }
+  const updateUserProfile = (name, photoURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  };
 
-    return (
-        <AuthContexts.Provider value={value}>{children}</AuthContexts.Provider>
-    );
+  const emailPasswordLogin = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const continueWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const signOutAuth = () => {
+    return signOut(auth);
+  };
+
+  const value = {
+    user,
+    setUser,
+    emailPasswordRegister,
+    updateUserProfile,
+    emailPasswordLogin,
+    continueWithGoogle,
+    signOutAuth,
+    setIUpdate,
+    iUpdate,
+  };
+
+  return (
+    <AuthContexts.Provider value={value}>{children}</AuthContexts.Provider>
+  );
 };
 
 export default AuthContext;
