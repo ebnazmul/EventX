@@ -18,12 +18,16 @@ const googleProvider = new GoogleAuthProvider();
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState({});
   const [iUpdate, setIUpdate] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user);
         setUser(user);
+        setLoading(false)
+      }else{
+        setLoading(false)
       }
     });
   }, [iUpdate]);
@@ -51,6 +55,7 @@ const AuthContext = ({ children }) => {
   };
 
   const value = {
+    loading,
     user,
     setUser,
     emailPasswordRegister,

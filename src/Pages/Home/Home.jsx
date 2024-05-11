@@ -15,7 +15,7 @@ const Home = () => {
       .then((res) => setPosts(res.data));
   }, []);
 
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10">

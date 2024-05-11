@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContexts } from "../Contexts/AuthContext";
 import { IoLogOutSharp } from "react-icons/io5";
 
@@ -7,11 +7,17 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { user, setUser, signOutAuth } = useContext(AuthContexts);
 
+  const navigate = useNavigate()
+
   const handleSignOut = () => {
     signOutAuth()
       .then(() => setUser({}))
       .catch((err) => console.log(err));
   };
+
+  const handleDropdown = (e) => {
+    navigate(`/${e.target.value}`)
+  }
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10 flex items-center justify-between">
@@ -23,14 +29,15 @@ const Navbar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>Services</li>
+          <li><Link to="/allservices">Services</Link></li>
           {user.metadata && (
             <li>
-              <select className="border">
-                <option value="">Add Service</option>
-                <option value="">Manage Service</option>
-                <option value="">Booked-Services</option>
-                <option value="">Service-To-Do</option>
+              <select onChange={handleDropdown} className="border outline-none">
+                <option value="">Dashboard</option>
+                <option value="addservice">Add Service</option>
+                <option value="manageservice">Manage Service</option>
+                <option value="bookedservices">Booked-Services</option>
+                <option value="servicetodo">Service-To-Do</option>
               </select>
             </li>
           )}
