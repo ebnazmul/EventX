@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContexts } from "../../Contexts/AuthContext";
+import toast from "react-hot-toast";
 
 const BookService = () => {
   const { id } = useParams();
@@ -12,6 +13,8 @@ const BookService = () => {
 
   const [isLoading, seIsLoading] = useState(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/post/${id}`).then((res) => {
       setSingleData(res.data);
@@ -20,17 +23,39 @@ const BookService = () => {
     });
   }, [id]);
 
-
   const handleBooking = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const form = e.target;
 
-    const bookData = {...singleData, buyerEmail: form.buyerEmail.value, date: form.date.value, specialInstructions: form.specialInstructions.value }
-    console.log(bookData);
-  }
+    const bookData = {
+      ...singleData,
+      buyerEmail: form.buyerEmail.value,
+      date: form.date.value,
+      specialInstructions: form.specialInstructions.value,
+      status: "Pending",
+    };
 
-  
+    delete bookData._id;
+
+    console.log(bookData);
+
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/bookservice`, bookData)
+      .then((res) => {
+        console.log(res);
+        if (res.data.acknowledged) {
+          toast.success(
+            "You succesfully booked the service, wait for providers reply!"
+          );
+          navigate("/bookedservices");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("You already brought this service!");
+      });
+  };
 
   if (isLoading) {
     return (
@@ -133,6 +158,7 @@ const BookService = () => {
             type="date"
             className="px-2 py-1 border border-gray-400 outline-none"
             autoFocus
+            required
           />
         </div>
         <div className="mb-2">
