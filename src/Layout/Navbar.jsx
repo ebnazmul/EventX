@@ -6,8 +6,8 @@ import { IoLogOutSharp } from "react-icons/io5";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { user, setUser, signOutAuth } = useContext(AuthContexts);
-
-  const navigate = useNavigate()
+  const [isDarkMode, setIsDarkMode] = useState(null);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     signOutAuth()
@@ -16,8 +16,10 @@ const Navbar = () => {
   };
 
   const handleDropdown = (e) => {
-    navigate(`/${e.target.value}`)
-  }
+    navigate(`/${e.target.value}`);
+  };
+
+  console.log(isDarkMode);
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10 flex items-center justify-between">
@@ -29,7 +31,9 @@ const Navbar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li><Link to="/allservices">Services</Link></li>
+          <li>
+            <Link to="/allservices">Services</Link>
+          </li>
           {user.metadata && (
             <li>
               <select onChange={handleDropdown} className="border outline-none">
@@ -47,8 +51,9 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <label className="cursor-pointer grid place-items-center">
           <input
+            onClick={(e) => setIsDarkMode(e.target.value)}
             type="checkbox"
-            value="synthwave"
+            value="dark"
             className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
           />
           <svg

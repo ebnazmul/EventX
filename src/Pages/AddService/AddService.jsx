@@ -16,7 +16,7 @@ const AddService = () => {
       price: form.price.value,
       service_area: form.service_area.value,
       description: form.description.value,
-      provaider: {
+      provider: {
         provider_email: user.email,
         provider_image: user.photoURL,
         provider_name: user.displayName,
