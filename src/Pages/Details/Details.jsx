@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Details = () => {
   const { id } = useParams();
 
-  const [singleData, setSingleData] = useState([]);
+  const [singleData, setSingleData] = useState({});
 
   const [isLoading, seIsLoading] = useState(true);
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/post/${id}`).then((res) => {
       setSingleData(res.data);
-      console.log(res.data);
+      // console.log(res.data);
       seIsLoading(false);
     });
   }, [id]);
@@ -50,7 +50,7 @@ const Details = () => {
         <p>{singleData.description}</p>
       </div>
       <div className="my-4"><h2 className="border py-2 px-4 rounded text-xl">Package Start from: ${singleData.price}</h2></div>
-      <button className="w-full py-2 bg-blue-400 text-white">Book Now ✅</button>
+      <Link to={`/book/${id}`}><button className="w-full py-2 bg-blue-400 text-white rounded">Book Now ✅</button></Link>
     </div>
   );
 };
