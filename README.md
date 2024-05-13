@@ -1,8 +1,17 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# EventX
+Catrgory: Spiritual activity services
 
-Currently, two official plugins are available:
+**Assignment_ID: assignment_category_0002**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+### Live Website URL: 
+
+## Features
+
+* Provider can add new service
+* The user can find the expected package.
+* The user can order packages for a specific day.
+* The provider can see orders the user purchased from his ad.
+* The provider can change the order status.
