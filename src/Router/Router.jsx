@@ -58,24 +58,44 @@ const router = createBrowserRouter([
       },
       {
         path: "book/:id",
-        element: <PrivateRoute><BookService/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <BookService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "manageservice",
-        element: <PrivateRoute><ManageService/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ManageService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "bookedservices",
-        element: <PrivateRoute><BookedServices/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <BookedServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "servicetodo",
-        element: <PrivateRoute><ServiceToDo/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ServiceToDo />
+          </PrivateRoute>
+        ),
       },
       {
         path: "update/:id",
-        element: <PrivateRoute><UpdateService/></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <UpdateService />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
