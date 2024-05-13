@@ -6,6 +6,7 @@ import { IoLogOutSharp } from "react-icons/io5";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { user, setUser, signOutAuth } = useContext(AuthContexts);
+  // eslint-disable-next-line no-unused-vars
   const [isDarkMode, setIsDarkMode] = useState(null);
   const navigate = useNavigate();
 
@@ -19,15 +20,16 @@ const Navbar = () => {
     navigate(`/${e.target.value}`);
   };
 
-  console.log(isDarkMode);
+  // console.log(isDarkMode);
 
   return (
-    <div className="max-w-screen-2xl mx-auto mt-10 flex items-center justify-between">
-      <h2 className="font-semibold text-3xl italic">
-        <Link to="/">EventX</Link>
-      </h2>
+    <div className="max-w-screen-2xl mx-auto mt-10 md:flex items-center justify-between">
+      <Link to="/">
+        <img src="/icon.png" className="w-16 h-16 mb-2" alt="" />
+      </Link>
+
       <div>
-        <ul className="flex gap-1 *:border *:py-2 *:px-5 rounded">
+        <ul className="flex gap-1 *:border *:py-2 lg:*:px-5 *:px-2 rounded">
           <li>
             <Link to="/">Home</Link>
           </li>

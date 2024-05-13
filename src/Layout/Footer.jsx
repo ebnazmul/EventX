@@ -1,9 +1,11 @@
 
 const Footer = () => {
     return (
-        <div className="max-w-screen-2xl mx-auto mt-10 flex flex-col-reverse space-y-2 md:flex-row flex-1 justify-between border-t">
+        <div className="max-w-screen-2xl mx-auto py-4 my-5 flex flex-col-reverse space-y-2 md:flex-row flex-1 justify-between border-t">
             <div>
+            <img src="/icon.png" className="w-16 h-16" alt="" />
             <h2 className="font-semibold text-3xl italic">EventX</h2>
+            
             <p>Copyright 2024 | EventX.com LLC</p>
             </div>
             <div>

@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "../../Extra/Card/Card";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -15,7 +16,9 @@ const Home = () => {
       .then((res) => setPosts(res.data));
   }, []);
 
-  // console.log(posts);
+  const postsInHome = posts.slice(0, 6);
+
+  console.log(postsInHome);
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10">
@@ -35,11 +38,17 @@ const Home = () => {
         className="mySwiper">
         {posts.map((data) => (
           <SwiperSlide key={data._id}>
-            <div className="w-full h-80 bg-cover rounded" style={{backgroundImage: `url("${data.image_url}")`}}></div>
+            <div
+              className="w-full h-80 bg-cover rounded"
+              style={{ backgroundImage: `url("${data.image_url}")` }}></div>
           </SwiperSlide>
         ))}
       </Swiper>
-      
+      <div className="mt-10 grid md:grid-cols-2 gap-2">
+        {postsInHome.map((post) => (
+          <Card key={post._id} post={post} />
+        ))}
+      </div>
     </div>
   );
 };
