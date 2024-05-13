@@ -3,6 +3,7 @@ import { AuthContexts } from "../../Contexts/AuthContext";
 import axios from "axios";
 import Card3 from "../../Extra/Card3/Card3";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const BookedServices = () => {
 
@@ -39,6 +40,7 @@ const BookedServices = () => {
   if (data.length > 0) {
     return (
       <div className="max-w-screen-2xl mx-auto mt-10 space-y-2">
+        <Helmet><title>Booked Services - EventX</title></Helmet>
         {data.map((card) => (
           <Card3 key={card._id} card={card} />
         ))}
@@ -47,6 +49,7 @@ const BookedServices = () => {
   } else {
     return (
       <div className="max-w-screen-2xl mx-auto mt-10">
+        <Helmet><title>Booked Services - EventX</title></Helmet>
         <h3 className="text-xl text-center my-20">You didnt booked any services yet!!</h3>
       </div>
     );

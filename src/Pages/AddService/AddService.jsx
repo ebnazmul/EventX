@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
   const { user } = useContext(AuthContexts);
@@ -37,6 +38,7 @@ const AddService = () => {
 
   return (
     <div className="mt-10 max-w-screen-2xl mx-auto">
+      <Helmet><title>Add Services - EventX</title></Helmet>
       <form onSubmit={handleAddService}>
         <div className="mb-2">
           <h3 className="mb-2">Category</h3>

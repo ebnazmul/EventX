@@ -110,7 +110,7 @@ const Navbar = () => {
             </button>
 
             {dropdown && (
-              <div className="border *:py-2 *:px-3 *:border *:bg-gray-400 text-white absolute top-10 right-0">
+              <div className="z-50 border *:py-2 *:px-3 *:border *:bg-gray-400 text-white absolute top-10 right-0">
                 <p onClick={() => setDropdown(!dropdown)}>
                   <Link to="/login">Login</Link>
                 </p>

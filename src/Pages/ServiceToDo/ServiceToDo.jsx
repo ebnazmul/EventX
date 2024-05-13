@@ -3,6 +3,7 @@ import { AuthContexts } from "../../Contexts/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Card4 from "../../Extra/Card4/Card4";
+import { Helmet } from "react-helmet-async";
 
 const ServiceToDo = () => {
   const { user } = useContext(AuthContexts);
@@ -39,6 +40,7 @@ const ServiceToDo = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto space-y-2 mt-10">
+      <Helmet><title>Service To Do - EventX</title></Helmet>
       {data.map((card) => (
         <Card4 key={card._id} card={card} />
       ))}

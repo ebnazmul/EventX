@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/AuthContext";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { emailPasswordRegister, continueWithGoogle, updateUserProfile, iUpdate, setIUpdate } = useContext(AuthContexts);
@@ -33,6 +34,7 @@ const Register = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto">
+      <Helmet><title>Register - EventX</title></Helmet>
       <div className="border w-fit px-10 py-10 mx-auto my-32">
         <h2 className="text-center font-bold text-xl mb-4">Register</h2>
         <form onSubmit={handleLogin}>

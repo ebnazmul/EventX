@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContexts } from "../../Contexts/AuthContext";
 import axios from "axios";
 import Card2 from "../../Extra/Card2/Card2";
+import { Helmet } from "react-helmet-async";
 
 const ManageService = () => {
   const { user, loading } = useContext(AuthContexts);
@@ -28,6 +29,7 @@ const ManageService = () => {
 
   return (
     <div className="mt-10 max-w-screen-2xl mx-auto space-y-2">
+      <Helmet><title>Manage Services - EventX</title></Helmet>
         {
             data.map((post)=> <Card2 key={post._id} post={post}/>)
         }

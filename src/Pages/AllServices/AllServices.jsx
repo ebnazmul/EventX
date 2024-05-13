@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../../Extra/Card/Card";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AllServices = () => {
 
@@ -16,6 +17,7 @@ const AllServices = () => {
 
     return (
         <div className="max-w-screen-2xl mx-auto my-10">
+            <Helmet><title>All Services - EventX</title></Helmet>
            <div>Search</div>
            <div className="mt-10 space-y-2">
             {

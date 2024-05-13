@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -52,6 +53,7 @@ const UpdateService = () => {
 
   return (
     <div className="mt-10 max-w-screen-2xl mx-auto">
+      <Helmet><title>Update - EventX</title></Helmet>
       <form onSubmit={handleUpdate}>
         <div className="mb-2">
           <h3 className="mb-2">Category</h3>

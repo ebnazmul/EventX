@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContexts } from "../../Contexts/AuthContext";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const BookService = () => {
   const { id } = useParams();
@@ -67,6 +68,7 @@ const BookService = () => {
 
   return (
     <div className="my-10 max-w-screen-2xl mx-auto">
+      <Helmet><title>Book - EventX</title></Helmet>
       <form onSubmit={handleBooking}>
         <div className="mb-2">
           <h3 className="mb-2">Service ID</h3>

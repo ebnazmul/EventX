@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 
 const Details = () => {
@@ -27,6 +28,7 @@ const Details = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10">
+      <Helmet><title>{singleData.service_name} - EventX</title></Helmet>
       <div className="my-4">
         <p className="font-bold italic">Provaider Details -&gt;</p>
         <div className="flex gap-2 items-center">
