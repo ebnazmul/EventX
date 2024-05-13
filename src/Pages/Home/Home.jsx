@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../Extra/Card/Card";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -22,6 +23,7 @@ const Home = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto mt-10">
+      <Helmet><title>EventX - Spiritual Activity Booking Services</title></Helmet>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
