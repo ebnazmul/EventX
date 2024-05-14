@@ -32,14 +32,14 @@ const Home = () => {
       </Helmet>
 
       {loading ? (
-        <Skeleton height={"320px"} />
+        <Skeleton height={"400px"} />
       ) : (
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
           loop={posts > 2 ? true : false}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -51,17 +51,33 @@ const Home = () => {
           {posts.map((data) => (
             <SwiperSlide key={data._id}>
               <div
-                className="w-full h-80 bg-cover rounded"
-                style={{ backgroundImage: `url("${data.image_url}")` }}></div>
+                className="w-full h-96 bg-cover rounded relative"
+                style={{ backgroundImage: `url("${data.image_url}")` }}>
+                <div className="p-10 rounded bg-[#1f293752] absolute top-10 left-20">
+                  <h3 className="py-1 px-2 rounded bg-gray-800 text-white text-xl">
+                    {data.service_name}
+                  </h3>
+                  <button className="px-2 py-1 border bg-gray-400 rounded mt-2">
+                    Book Now
+                  </button>
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
       )}
 
+      <h3 className="mt-10 text-center text-xl font-semibold">Our Services</h3>
+
       <div className="mt-10 grid md:grid-cols-2 gap-2">
-        {
-          loading && <><Skeleton style={{ width: "100%", height: "600px" }} /><Skeleton style={{ width: "100%", height: "600px" }} /><Skeleton style={{ width: "100%", height: "600px" }} /><Skeleton style={{ width: "100%", height: "600px" }} /></>
-        }
+        {loading && (
+          <>
+            <Skeleton style={{ width: "100%", height: "600px" }} />
+            <Skeleton style={{ width: "100%", height: "600px" }} />
+            <Skeleton style={{ width: "100%", height: "600px" }} />
+            <Skeleton style={{ width: "100%", height: "600px" }} />
+          </>
+        )}
         {postsInHome.map((post) => (
           <Card key={post._id} post={post} />
         ))}

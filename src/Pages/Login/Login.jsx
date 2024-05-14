@@ -1,29 +1,40 @@
 import { useContext } from "react";
 import { AuthContexts } from "../../Contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { emailPasswordLogin, continueWithGoogle } = useContext(AuthContexts);
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
 
     emailPasswordLogin(form.email.value, form.password.value)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then(() => {
+        toast.success("Login success");
+        navigate("/");
+      })
+      .catch(() => toast.error("Something went wrong"));
   };
 
   const handleGoogle = () => {
     continueWithGoogle()
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
+      .then(() => {
+        toast.success("Login success");
+        navigate("/");
+      })
+      .catch(() => toast.error("Something went wrong"));
   };
 
   return (
     <div className="max-w-screen-2xl mx-auto">
-      <Helmet><title>Login - EventX</title></Helmet>
+      <Helmet>
+        <title>Login - EventX</title>
+      </Helmet>
       <div className="border w-fit px-10 py-10 mx-auto my-32">
         <h2 className="text-center font-bold text-xl mb-4">Login</h2>
         <form onSubmit={handleLogin}>
