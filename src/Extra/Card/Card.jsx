@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+
 
 // eslint-disable-next-line react/prop-types
 const Card = ({ post }) => {
   // console.log();
 
   return (
-    <div className="w-full p-1 md:p-2 lg:p-3 border rounded">
+    <motion.div whileHover={{scale: 1.05}} className="w-full p-1 md:p-2 lg:p-3 border rounded">
       <div
         className="h-80 w-full rounded bg-cover mb-4"
         style={{ backgroundImage: `url("${post.image_url}")` }}
@@ -29,7 +31,7 @@ const Card = ({ post }) => {
         </div>
       </div>
       <Link to={`/details/${post._id}`}><button className="w-full py-3 mt-4 rounded bg-blue-400 text-white">View Details</button></Link>
-    </div>
+    </motion.div>
   );
 };
 
