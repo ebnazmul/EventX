@@ -42,11 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "allservices",
-        element: (
-          <PrivateRoute>
-            <AllServices />
-          </PrivateRoute>
-        ),
+        element: <AllServices />,
       },
       {
         path: "details/:id",

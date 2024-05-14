@@ -9,7 +9,7 @@ const Card = ({ post }) => {
   // console.log();
 
   return (
-    <motion.div whileHover={{scale: 1.05}} className="w-full p-1 md:p-2 lg:p-3 border rounded">
+    <motion.div whileHover={{scale: 1.02}} className="w-full p-1 md:p-2 lg:p-3 border rounded">
       <div
         className="h-80 w-full rounded bg-cover mb-4"
         style={{ backgroundImage: `url("${post.image_url}")` }}
