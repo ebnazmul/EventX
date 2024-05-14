@@ -10,7 +10,7 @@ const Footer = () => {
             </div>
             <div>
                 <h4 className="font-bold">Helpful Links</h4>
-                <ul>
+                <ul className="*:cursor-pointer">
                     <li>Support</li>
                     <li>Refund Policy</li>
                     <li>Terms and confitions</li>
@@ -18,7 +18,7 @@ const Footer = () => {
             </div>
             <div>
                 <h4 className="font-bold">Social</h4>
-                <ul>
+                <ul className="*:cursor-pointer">
                     <li>Facebook</li>
                     <li>LinkdIn</li>
                 </ul>

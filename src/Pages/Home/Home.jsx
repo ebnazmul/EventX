@@ -76,22 +76,31 @@ const Home = () => {
             <Skeleton style={{ width: "100%", height: "600px" }} />
             <Skeleton style={{ width: "100%", height: "600px" }} />
             <Skeleton style={{ width: "100%", height: "600px" }} />
+            <Skeleton style={{ width: "100%", height: "600px" }} />
+            <Skeleton style={{ width: "100%", height: "600px" }} />
           </>
         )}
         {postsInHome.map((post) => (
           <Card key={post._id} post={post} />
         ))}
       </div>
-      <div className="my-10 p-4 border text-center space-y-4">
-
+      <div className="my-10 p-10 border text-center space-y-4">
         <div>
-        <h3 className="text-xl font-semibold">Subscribe to our newsletter</h3>
-        <p>Subscribe to out newsletter for intersting offers and huge discounts.</p>
+          <h3 className="text-xl font-semibold">Subscribe to our newsletter</h3>
+          <p>
+            Subscribe to out newsletter for intersting offers and huge
+            discounts.
+          </p>
         </div>
 
-        <input className="max-w-48 border px-2 py-1 outline-blue-200" type="email" />
-        <button className="md:ml-3 px-2 py-1 bg-blue-400 rounded">Subscribe</button>
-
+        <input
+          placeholder="jhon@eon.com"
+          className="max-w-48 border px-2 py-1 outline-blue-200"
+          type="email"
+        />
+        <button className="md:ml-3 ml-1 px-2 py-1 bg-blue-400 rounded">
+          Subscribe
+        </button>
       </div>
     </div>
   );
