@@ -82,6 +82,17 @@ const Home = () => {
           <Card key={post._id} post={post} />
         ))}
       </div>
+      <div className="my-10 p-4 border text-center space-y-4">
+
+        <div>
+        <h3 className="text-xl font-semibold">Subscribe to our newsletter</h3>
+        <p>Subscribe to out newsletter for intersting offers and huge discounts.</p>
+        </div>
+
+        <input className="max-w-48 border px-2 py-1 outline-blue-200" type="email" />
+        <button className="md:ml-3 px-2 py-1 bg-blue-400 rounded">Subscribe</button>
+
+      </div>
     </div>
   );
 };
