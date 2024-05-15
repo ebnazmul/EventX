@@ -10,13 +10,16 @@ const ManageService = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-   if(user.email){
-    axios.post(`${import.meta.env.VITE_API_URL}/manageservice`, {email: user.email})
-    .then((res) => {
-    //   console.log(res);
-      setData(res.data);
-    });
-   }
+    if (user.email) {
+      axios
+        .post(`${import.meta.env.VITE_API_URL}/manageservice`, {
+          email: user.email,
+        })
+        .then((res) => {
+          //   console.log(res);
+          setData(res.data);
+        });
+    }
   }, [user]);
 
   if (loading) {
@@ -29,10 +32,14 @@ const ManageService = () => {
 
   return (
     <div className="mt-10 max-w-screen-2xl mx-auto space-y-2">
-      <Helmet><title>Manage Services - EventX</title></Helmet>
-        {
-            data.map((post)=> <Card2 key={post._id} post={post}/>)
-        }
+      <Helmet>
+        <title>Manage Services - EventX</title>
+      </Helmet>
+      {data.length < 1 ? (
+        <h2 className="text-xl text-center mt-10">Nothing to manage!</h2>
+      ) : (
+        data.map((post) => <Card2 key={post._id} post={post} />)
+      )}
     </div>
   );
 };

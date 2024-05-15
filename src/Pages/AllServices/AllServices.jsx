@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "../../Extra/Card/Card";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
@@ -11,6 +11,8 @@ const AllServices = () => {
   // eslint-disable-next-line no-unused-vars
   const [postInEveryPage, setPostInEveryPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
+  const divRef = useRef();
+ 
 
   // Pagination
 
@@ -51,8 +53,12 @@ const AllServices = () => {
       .catch((err) => console.err(err));
   };
 
+  const intoView = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   return (
-    <div className="max-w-screen-2xl mx-auto my-10">
+    <div ref={divRef} className="max-w-screen-2xl mx-auto my-10">
       <Helmet>
         <title>All Services - EventX</title>
       </Helmet>
@@ -75,14 +81,17 @@ const AllServices = () => {
         <button
           className="bg-blue-200"
           onClick={() => {
-            currentPage > 1 && setCurrentPage(currentPage - 1);
+            currentPage > 1 && (setCurrentPage(currentPage - 1), intoView())
           }}>
           Previous
         </button>
         {pages.map((num) => (
           <button
             className={currentPage === num && "bg-blue-400"}
-            onClick={() => setCurrentPage(num)}
+            onClick={() => {
+              setCurrentPage(num);
+              intoView();
+            }}
             key={num}>
             {num}
           </button>
@@ -90,7 +99,8 @@ const AllServices = () => {
         <button
           className="bg-blue-200"
           onClick={() => {
-            currentPage < pages.length && setCurrentPage(currentPage + 1);
+            currentPage < pages.length &&
+              (setCurrentPage(currentPage + 1), intoView());
           }}>
           Next
         </button>

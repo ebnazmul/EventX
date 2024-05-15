@@ -40,10 +40,15 @@ const ServiceToDo = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto space-y-2 mt-10">
-      <Helmet><title>Service To Do - EventX</title></Helmet>
-      {data.map((card) => (
-        <Card4 key={card._id} card={card} />
-      ))}
+      <Helmet>
+        <title>Service To Do - EventX</title>
+      </Helmet>
+
+      {data.length < 1 ? (
+        <h2 className="text-xl text-center mt-10">Nothing to do!</h2>
+      ) : (
+        data.map((card) => <Card4 key={card._id} card={card} />)
+      )}
     </div>
   );
 };
