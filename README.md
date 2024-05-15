@@ -6,7 +6,7 @@ Catrgory: Spiritual activity services
 
 
 
-### Live Website URL: 
+### Live Website URL: https://eventx-1a152.web.app/
 
 ## Features
 
